@@ -19,7 +19,7 @@ export default function AboutSection() {
         'Cours d’hébreu flexibles pour tous les membres de la famille.',
         'Voyages sur mesure pour explorer les écoles, quartiers, et services avant votre départ.',
       ],
-      imageSrc: '/family.jpg',
+      imageSrc: '/aide.jpg',
     },
     {
       title: 'Préserver Vos Valeurs, Enrichir Votre Identité',
