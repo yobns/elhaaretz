@@ -6,9 +6,13 @@ html {
 	scroll-behavior: smooth;
   }
   
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
+  body {
+	font-family: var(--font-body), sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+	font-family: var(--font-heading), sans-serif;
+  }
 
 @layer base {
   :root {
@@ -37,6 +41,8 @@ body {
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+	--font-body: var(--font-inter);
+	--font-heading: var(--font-poppins);
   }
   .dark {
     --background: 222.2 84% 4.9%;

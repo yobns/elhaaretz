@@ -5,25 +5,26 @@ import Image from 'next/image';
 import { Button } from '@/app/components/ui/button';
 import AnimatedSection from '@/app/components/Animation';
 import { ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
 export default function SupportDetails() {
   const details = [
     {
       title: 'Oulpan Linguistique',
       description:
-        "Des cours de langue adaptés à votre emploi du temps pour une maîtrise rapide de l’hébreu.",
+        'Des cours d’hébreu adaptés aux besoins des parents, qu’ils soient disponibles en matinée ou en soirée.',
       imageSrc: '/oulpan.jpg',
     },
     {
       title: 'Voyages Préparatoires',
       description:
-        "Découvrez les réalités de la vie en Israël avec nos voyages de préparation sur mesure.",
+        'Explorez Israël avec des visites immersives des quartiers, écoles, et services locaux pour bien planifier votre installation.',
       imageSrc: '/elal.jpg',
     },
     {
       title: 'Aide à l’Emploi',
       description:
-        "Des conseils et outils pour intégrer le marché du travail israélien avec succès.",
+        'Recevez des conseils pratiques pour vous intégrer au marché du travail israélien avec succès.',
       imageSrc: '/emploi.jpg',
     },
   ];
@@ -56,13 +57,15 @@ export default function SupportDetails() {
                   <p className="text-blue-700">{detail.description}</p>
                 </CardContent>
                 <CardFooter className="bg-gradient-to-r from-blue-100 to-blue-50 p-6 flex justify-center items-center">
-                  <Button
-                    variant="outline"
-                    className="flex items-center gap-2 text-blue-900 hover:text-blue-50 hover:bg-blue-900"
-                  >
-                    En savoir plus
-                    <ArrowRight className="w-5 h-5" />
-                  </Button>
+                  <Link href="#contact" passHref>
+                    <Button
+                      variant="outline"
+                      className="flex items-center gap-2 text-blue-900 hover:text-blue-50 hover:bg-blue-900"
+                    >
+                      En savoir plus
+                      <ArrowRight className="w-5 h-5" />
+                    </Button>
+                  </Link>
                 </CardFooter>
               </Card>
             </AnimatedSection>

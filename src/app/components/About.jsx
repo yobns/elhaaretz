@@ -4,22 +4,31 @@ import Image from 'next/image';
 export default function AboutSection() {
   const aboutContent = [
     {
-      title: 'Une Transition Maitrisée',
-      description:
-        "Nous aidons les familles à s’intégrer en douceur en fournissant les outils nécessaires à une nouvelle vie en Israël.",
+      title: 'Une Vision à Long Terme',
+      description: [
+        'Nous créons des plans d’intégration qui s’adaptent à vos projets de vie : éducation, logement, et carrière.',
+        'Des ateliers et consultations régulières pour anticiper vos besoins.',
+        'L’objectif : trouver rapidement votre place dans la société israélienne.',
+      ],
       imageSrc: '/israel.jpg',
     },
     {
-      title: 'Soutien Personnalisé',
-      description:
-        "Des solutions adaptées à chaque famille pour répondre aux défis uniques de l’Aliyah.",
+      title: 'Des Ressources pour Chaque Étape',
+      description: [
+        'Assistance proactive pour toutes vos démarches administratives.',
+        'Cours d’hébreu flexibles pour tous les membres de la famille.',
+        'Voyages sur mesure pour explorer les écoles, quartiers, et services avant votre départ.',
+      ],
       imageSrc: '/family.jpg',
     },
     {
-      title: 'Un Nouveau Départ',
-      description:
-        "Préserver l’identité française tout en s’intégrant harmonieusement dans la société israélienne.",
-      imageSrc: '/france-israel.jpg',
+      title: 'Préserver Vos Valeurs, Enrichir Votre Identité',
+      description: [
+        'Créer des ponts entre votre héritage culturel et la vie en Israël.',
+        'Assurer une continuité éducative pour vos enfants.',
+        'Favoriser les liens avec des groupes locaux partageant vos valeurs.',
+      ],
+      imageSrc: '/jeru.png',
     },
   ];
 
@@ -46,13 +55,15 @@ export default function AboutSection() {
                   className="rounded-2xl shadow-2xl"
                 />
               </div>
-              <div className="md:w-1/2 mt-8 md:mt-0">
+              <div className="md:w-1/2 mt-16 md:mt-0">
                 <h2 className="text-3xl font-bold mb-6 text-blue-900">
                   {content.title}
                 </h2>
-                <p className="text-lg text-blue-700 leading-relaxed">
-                  {content.description}
-                </p>
+                <ul className="list-disc pl-5 text-lg text-blue-700 leading-relaxed">
+                  {content.description.map((item, idx) => (
+                    <li key={idx}>{item}</li>
+                  ))}
+                </ul>
               </div>
             </div>
           </AnimatedSection>

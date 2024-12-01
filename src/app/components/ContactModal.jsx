@@ -1,75 +1,127 @@
 'use client';
 
-import * as Dialog from '@radix-ui/react-dialog';
-import { X } from 'lucide-react';
+import { Dialog } from '@headlessui/react';
+import { useState } from 'react';
 
-export default function ContactModal({ trigger }) {
-  return (
-    <Dialog.Root>
-      {/* Trigger */}
-      <Dialog.Trigger asChild>{trigger}</Dialog.Trigger>
+export default function ContactModal({ isOpen, onClose }) {
+	const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+	const [loading, setLoading] = useState(false);
+	const [success, setSuccess] = useState(false);
 
-      {/* Modal Content */}
-      <Dialog.Portal>
-        <Dialog.Overlay className="fixed inset-0 bg-black/50 z-50" />
-        <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-lg p-6 w-[90%] max-w-lg z-50">
-          <Dialog.Title className="text-2xl font-bold text-blue-900">
-            Contactez-nous
-          </Dialog.Title>
-          <Dialog.Description className="mt-2 text-gray-600">
-            Remplissez ce formulaire pour nous contacter.
-          </Dialog.Description>
-          <form className="mt-4 space-y-4">
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-                Nom
-              </label>
-              <input
-                type="text"
-                id="name"
-                className="mt-1 w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                placeholder="Votre nom"
-              />
-            </div>
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                className="mt-1 w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                placeholder="Votre email"
-              />
-            </div>
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium text-gray-700">
-                Message
-              </label>
-              <textarea
-                id="message"
-                className="mt-1 w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                placeholder="Votre message"
-                rows={4}
-              />
-            </div>
-            <button
-              type="submit"
-              className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition"
-            >
-              Envoyer
-            </button>
-          </form>
-          <Dialog.Close asChild>
-            <button
-              className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
-              aria-label="Fermer"
-            >
-              <X className="w-5 h-5" />
-            </button>
-          </Dialog.Close>
-        </Dialog.Content>
-      </Dialog.Portal>
-    </Dialog.Root>
-  );
+	const handleInputChange = (e) => {
+		const { name, value } = e.target;
+		setFormData((prev) => ({ ...prev, [name]: value }));
+	};
+
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		setLoading(true);
+		setSuccess(false);
+
+		try {
+			const response = await fetch('/api/send-email', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(formData),
+			});
+
+			if (response.ok) {
+				setSuccess(true);
+				setFormData({ name: '', email: '', message: '' });
+			} else {
+				throw new Error('Erreur lors de l\'envoi');
+			}
+		} catch (error) {
+			alert('Une erreur est survenue. Veuillez réessayer.');
+		} finally {
+			setLoading(false);
+		}
+	};
+
+	return (
+		<Dialog
+			open={isOpen}
+			onClose={onClose}
+			className="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-sm"
+		>
+			<div className="fixed inset-0 bg-black bg-opacity-30 transition-opacity" />
+			<Dialog.Panel className="relative w-full max-w-lg bg-white rounded-lg shadow-2xl transform transition-all">
+				<button
+					onClick={onClose}
+					className="absolute top-3 right-3 text-gray-400 hover:text-gray-600 focus:outline-none"
+					aria-label="Fermer"
+				>
+					✖
+				</button>
+				<Dialog.Title className="text-xl font-semibold text-gray-900 px-6 py-4 border-b">
+					Contactez-nous
+				</Dialog.Title>
+				<div className="px-6 py-5">
+					<p className="text-sm text-gray-600 mb-4">
+						Remplissez ce formulaire pour nous envoyer un message.<br />
+						Nous vous reconnecterons dans les plus brefs délais.
+					</p>
+					<form onSubmit={handleSubmit} className="space-y-6">
+						<div>
+							<label className="block text-sm font-medium text-gray-700 mb-1">
+								Nom
+							</label>
+							<input
+								type="text"
+								name="name"
+								value={formData.name}
+								onChange={handleInputChange}
+								required
+								className="block w-full px-4 py-2 rounded-md border border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 transition"
+								placeholder="Votre nom"
+							/>
+						</div>
+						<div>
+							<label className="block text-sm font-medium text-gray-700 mb-1">
+								Email
+							</label>
+							<input
+								type="email"
+								name="email"
+								value={formData.email}
+								onChange={handleInputChange}
+								required
+								className="block w-full px-4 py-2 rounded-md border border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 transition"
+								placeholder="Votre email"
+							/>
+						</div>
+						<div>
+							<label className="block text-sm font-medium text-gray-700 mb-1">
+								Message
+							</label>
+							<textarea
+								name="message"
+								value={formData.message}
+								onChange={handleInputChange}
+								required
+								rows="4"
+								className="block w-full px-4 py-2 rounded-md border border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 transition resize-none"
+								placeholder="Votre message"
+							/>
+						</div>
+						<button
+							type="submit"
+							disabled={loading}
+							className={`w-full py-2 rounded-md text-white font-medium transition ${loading
+									? 'bg-blue-400 cursor-not-allowed'
+									: 'bg-blue-600 hover:bg-blue-700'
+								}`}
+						>
+							{loading ? 'Envoi en cours...' : 'Envoyer'}
+						</button>
+					</form>
+					{success && (
+						<p className="text-center text-sm text-green-500 mt-4">
+							Message envoyé avec succès !
+						</p>
+					)}
+				</div>
+			</Dialog.Panel>
+		</Dialog>
+	);
 }
