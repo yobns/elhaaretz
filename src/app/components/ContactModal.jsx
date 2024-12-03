@@ -57,9 +57,8 @@ export default function ContactModal({ isOpen, onClose }) {
 					Contactez-nous
 				</Dialog.Title>
 				<div className="px-6 py-5">
-					<p className="text-sm text-gray-600 mb-4">
-						Remplissez ce formulaire pour nous envoyer un message.<br />
-						Nous vous reconnecterons dans les plus brefs délais.
+					<p className="text-sm text-gray-600 font-medium mb-4">
+						Remplissez ce formulaire <span className='italic font-normal'>ou</span> appelez-nous au <a href="tel:+33601010101" className="text-blue-700 underline whitespace-nowrap font-normal">+33 6 01 01 01 01</a><br />
 					</p>
 					<form onSubmit={handleSubmit} className="space-y-6">
 						<div>
@@ -108,8 +107,8 @@ export default function ContactModal({ isOpen, onClose }) {
 							type="submit"
 							disabled={loading}
 							className={`w-full py-2 rounded-md text-white font-medium transition ${loading
-									? 'bg-blue-400 cursor-not-allowed'
-									: 'bg-blue-600 hover:bg-blue-700'
+								? 'bg-blue-400 cursor-not-allowed'
+								: 'bg-blue-700 hover:bg-customBlue'
 								}`}
 						>
 							{loading ? 'Envoi en cours...' : 'Envoyer'}

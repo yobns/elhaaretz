@@ -7,6 +7,7 @@ import ProgramHighlights from '@/app/components/ProgramHighlights'
 import SupportDetails from '@/app/components/SupportDetails'
 import TextSection from './components/TextSection'
 import { Separator } from './components/ui/separator'
+import Bar from './components/Bar'
 
 export default function Component() {
 	return (
@@ -14,13 +15,14 @@ export default function Component() {
 			<Nav />
 			<main className="flex-grow">
 				<Hero />
+				<Bar />
 				<ProgramHighlights />
 				<TextSection />
 				<Separator className="my-12" />
 				<About />
 				<Separator className="my-8" />
 				<SupportDetails />
-				<Separator className="my-8" />
+				<Separator className="my-4" />
 				<Contact />
 			</main>
 			<Footer />

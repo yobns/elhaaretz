@@ -11,7 +11,7 @@ module.exports = {
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
-  			customBlue: 'rgba(30, 58, 138, 0.1)',
+  			customBlue: 'rgba(30, 58, 138)',
   			card: {
   				DEFAULT: 'hsl(var(--card))',
   				foreground: 'hsl(var(--card-foreground))'

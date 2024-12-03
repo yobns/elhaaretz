@@ -81,13 +81,13 @@ const Nav = () => {
 			</div>
 			<AnimatePresence>
 				{isOpen && (
-					  <motion.div
-					  className="fixed top-0 right-0 bottom-0 w-4/5 bg-gradient-to-br from-blue-800 via-blue-700 to-blue-300 shadow-2xl z-20 flex flex-col"
-					  initial="hidden"
-					  animate="visible"
-					  exit="exit"
-					  variants={menuVariants}
-					  transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+					<motion.div
+						className="fixed top-0 right-0 bottom-0 w-[80%] bg-gradient-to-br from-customBlue via-blue-900 to-blue-700 shadow-2xl z-20 flex flex-col"
+						initial="hidden"
+						animate="visible"
+						exit="exit"
+						variants={menuVariants}
+						transition={{ type: 'spring', stiffness: 300, damping: 30 }}
 					>
 						<div className="p-6 flex justify-end">
 							<button
@@ -98,7 +98,7 @@ const Nav = () => {
 								<X className="w-8 h-8" />
 							</button>
 						</div>
-						<div className="flex flex-col items-start space-y-8 mt-10 px-8">
+						<div className="flex flex-col items-start space-y-6 mt-10 px-8">
 							{links.map(({ href, label }, index) => (
 								<motion.div
 									key={href}
@@ -109,7 +109,7 @@ const Nav = () => {
 									<Link
 										href={href}
 										onClick={() => setIsOpen(false)}
-										className="text-4xl md:text-5xl font-bold text-white hover:hover:text-gray-500 transition-colors duration-300"
+										className="text-2xl sm:text-3xl font-bold text-white hover:text-gray-300 transition-colors duration-300"
 									>
 										{label}
 									</Link>
@@ -126,7 +126,7 @@ const Nav = () => {
 										className="mt-6 px-6 py-3 flex items-center gap-3 cursor-pointer bg-white/10 hover:bg-white/20 text-white border-white/30 transition-all duration-300 rounded-full"
 									>
 										<Phone className="w-6 h-6" />
-										<span className="text-lg font-medium">+1 (234) 567-890</span>
+										<span className="text-l font-medium">+1 (234) 567-890</span>
 									</Badge>
 								</Link>
 							</motion.div>
