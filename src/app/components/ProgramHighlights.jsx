@@ -7,17 +7,17 @@ import Carousel from '../../lib/carousel';
 export default function ProgramHighlights() {
 	const features = [
 		{
-			icon: Clipboard,
-			title: 'Aide Administrative',
-			description:
-				"Un accompagnement pour simplifier les démarches officielles et faciliter votre installation en Israël.",
-			color: 'text-customBlue',
-		},
-		{
 			icon: Home,
 			title: 'Logement et Prêts Immobiliers',
 			description:
 				'Trouvez un logement adapté à vos besoins grâce à des conseils sur les prêts immobiliers et une orientation personnalisée.',
+			color: 'text-customBlue',
+		},
+		{
+			icon: Clipboard,
+			title: 'Aide Administrative',
+			description:
+				"Un accompagnement pour simplifier les démarches officielles et faciliter votre installation en Israël.",
 			color: 'text-customBlue',
 		},
 		{
@@ -60,7 +60,6 @@ export default function ProgramHighlights() {
 						Chaque étape de votre Aliyah est accompagnée par notre expertise, pour une intégration en Israël fluide et réussie.
 					</p>
 				</motion.div>
-				{/* Carrousel sur mobile */}
 				<div className="block md:hidden">
 					<Carousel
 						items={features}
@@ -68,7 +67,6 @@ export default function ProgramHighlights() {
 						className="pb-12"
 					/>
 				</div>
-				{/* Grille pour les écrans plus larges */}
 				<div className="hidden md:grid md:grid-cols-3 gap-12">
 					{features.map((feature, index) => (
 						<motion.div

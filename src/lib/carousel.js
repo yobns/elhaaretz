@@ -16,9 +16,10 @@ const Carousel = ({ items, renderCard, className = '' }) => {
 				slidesPerView={1}
 				navigation
 				pagination={{ clickable: true }}
+				style={{ '--swiper-navigation-sides-offset': '0px' }}
 			>
 				{items.map((item, index) => (
-					<SwiperSlide key={index}>
+					<SwiperSlide key={index} className="px-4">
 						<AnimatedSection delay={index * 0.2}>
 							<div className="p-6 max-w-[90%] mx-auto mb-6">
 								{renderCard(item)}

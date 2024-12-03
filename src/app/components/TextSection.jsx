@@ -12,7 +12,7 @@ export default function TextSection() {
 					</h2>
 				</AnimatedSection>
 				<AnimatedSection delay={0.2}>
-					<p className="text-xl text-blue-700 max-w-3xl mx-auto">
+					<p className="text-l md:text-xl text-blue-700 max-w-3xl mx-auto">
 						Avec EL HAARETZ, chaque famille bénéficie d’un accompagnement personnalisé.<br />Nous vous aidons à surmonter les défis administratifs, linguistiques, et culturels pour construire une nouvelle vie en Israël, dans le respect de vos valeurs et aspirations.
 					</p>
 				</AnimatedSection>
