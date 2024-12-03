@@ -15,7 +15,7 @@ const menuVariants = {
 const NavLink = ({ href, children, isAtTop, onClick }) => (
 	<Link
 		href={href}
-		className={`text-sm font-bold transition-colors ${isAtTop ? 'text-white hover:text-blue-400' : 'text-gray-800 hover:text-blue-600'
+		className={`text-sm font-bold transition-colors ${isAtTop ? 'text-white hover:text-blue-400' : 'text-customBlue hover:text-blue-600'
 			}`}
 		onClick={onClick}
 	>

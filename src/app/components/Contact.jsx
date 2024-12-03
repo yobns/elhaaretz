@@ -19,7 +19,7 @@ export default function Contact() {
         </AnimatedSection>
         <AnimatedSection delay={0.2}>
           <p className="text-xl mb-12 max-w-2xl mx-auto">
-            Vous avez des questions ?<br />Notre équipe est là pour vous aider.
+            Vous avez des questions ?<br />Nos équipes sont là pour vous.
           </p>
         </AnimatedSection>
         <AnimatedSection delay={0.4}>

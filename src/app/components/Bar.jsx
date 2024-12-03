@@ -8,7 +8,7 @@ const Font = Roboto_Condensed({
 export default function Bar() {
 	return (
 		<div className="w-full bg-customBlue text-white text-center py-3">
-			<p className={`${Font.className} text-sm md:text-base`}>Site en construction. Pour plus d'informations, Contactez-nous.</p>
+			<p className={`${Font.className} text-sm md:text-base`}>Site en construction. Pour plus d'informations, <a href="#contact" className="underline">contactez-nous</a></p>
 		</div>
 	);
 }
